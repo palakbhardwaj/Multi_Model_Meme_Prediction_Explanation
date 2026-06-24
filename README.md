@@ -1,59 +1,204 @@
 # Multimodal Meme Prediction and Explanation
 
+A multimodal AI framework that combines visual and textual understanding to predict meme sentiment and generate human-readable explanations for model decisions.
+
+---
+
 ## Overview
 
-This project presents a Multimodal Meme Prediction and Explanation framework that combines image understanding and text sentiment analysis to classify memes and generate interpretable explanations. The system leverages state-of-the-art vision-language models and natural language processing techniques to improve meme understanding and explain AI predictions.
+Memes communicate meaning through a combination of images and text, making them challenging for traditional unimodal models. This project addresses that challenge by integrating computer vision and natural language processing techniques to perform sentiment classification on memes while providing interpretable explanations for the predictions.
 
-## Features
+The framework utilizes CLIP for visual understanding and DistilBERT for textual sentiment analysis. Predictions from both modalities are fused to produce a final sentiment label, and an explanation module generates a rationale describing the decision.
+
+---
+
+## Key Features
 
 - Multimodal meme sentiment classification
-- Image and text-based prediction
-- Explainable AI through rationale generation
-- Semantic similarity evaluation
-- Natural Language Inference (NLI) based explanation validation
-- Confidence-based multimodal fusion
+- Visual sentiment prediction using CLIP
+- Text sentiment prediction using DistilBERT
+- Confidence-based fusion of image and text predictions
+- Automatic explanation generation
+- Explainable AI for transparent decision-making
+- End-to-end notebook implementation
 
-## Models Used
+---
 
-| Component | Model |
-|------------|--------|
-| Image Understanding | CLIP ViT-B/32 |
-| Text Sentiment Analysis | DistilBERT SST-2 |
-| Semantic Similarity | Sentence-BERT (all-MiniLM-L6-v2) |
-| Explanation Verification | BART Large MNLI |
+## Architecture
 
-## Methodology
+### Step 1: Text Analysis
+The textual content of memes is processed using a pre-trained DistilBERT sentiment classifier.
 
-### 1. Text Analysis
-The textual content extracted from memes is analyzed using a fine-tuned DistilBERT sentiment classifier to determine positive or negative sentiment.
+**Model Used**
+- DistilBERT SST-2
 
-### 2. Image Analysis
-Visual features are extracted using CLIP, which compares meme images against sentiment-related prompts to estimate image sentiment.
+**Output**
+- Positive sentiment
+- Negative sentiment
+- Confidence score
 
-### 3. Multimodal Fusion
-Predictions from text and image modalities are combined using confidence-weighted fusion to obtain a final sentiment prediction.
+---
 
-### 4. Explanation Generation
-The framework generates natural language explanations based on:
-- Predicted sentiment
-- Humor annotations
-- Sarcasm annotations
-- Offensive content labels
-- Visual context
+### Step 2: Image Analysis
 
-### 5. Explanation Evaluation
-Generated explanations are evaluated using:
-- Semantic Similarity (Sentence-BERT)
-- Natural Language Inference (BART-MNLI)
+The meme image is analyzed using CLIP (Contrastive Language-Image Pretraining).
+
+**Model Used**
+- CLIP ViT-B/32
+
+The model compares image features against sentiment-related prompts and predicts the visual sentiment of the meme.
+
+---
+
+### Step 3: Multimodal Fusion
+
+Predictions from both modalities are combined using confidence-based fusion to obtain the final sentiment classification.
+
+This allows the framework to utilize both:
+- Visual cues
+- Textual context
+
+for more robust meme understanding.
+
+---
+
+### Step 4: Explanation Generation
+
+The framework generates a natural language explanation describing why a particular sentiment was assigned.
+
+The explanation is constructed using:
+- Text sentiment
+- Image sentiment
+- Humor information
+- Sarcasm information
+- Offensive content annotations
+
+This improves model transparency and interpretability.
+
+---
 
 ## Dataset
 
-The project utilizes the Memotion Dataset containing:
+The project uses the **Memotion Dataset**, which contains:
+
 - Meme images
-- Meme text
-- Sentiment labels
-- Humor labels
-- Sarcasm labels
-- Offensive content annotations
+- Meme captions/text
+- Sentiment annotations
+- Humor annotations
+- Sarcasm annotations
+- Offensive content labels
+
+The dataset is preprocessed before inference and analysis.
+
+---
 
 ## Project Structure
+
+```text
+Multimodal-Meme-Prediction/
+│
+├── Multi_Model_Meme_Prediction_Explanation.ipynb
+├── dataset/
+├── outputs/
+├── images/
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Technologies Used
+
+- Python
+- PyTorch
+- Hugging Face Transformers
+- CLIP
+- Pandas
+- NumPy
+- Pillow
+- Matplotlib
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/Multimodal-Meme-Prediction.git
+cd Multimodal-Meme-Prediction
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Usage
+
+Launch Jupyter Notebook:
+
+```bash
+jupyter notebook
+```
+
+Open:
+
+```text
+Multi_Model_Meme_Prediction_Explanation.ipynb
+```
+
+Run all cells sequentially to:
+
+1. Load the dataset
+2. Perform text sentiment analysis
+3. Perform image sentiment analysis
+4. Fuse predictions
+5. Generate explanations
+6. Visualize results
+
+---
+
+## Sample Output
+
+```text
+Meme Sentiment: Positive
+
+Text Prediction:
+Positive (0.91)
+
+Image Prediction:
+Positive (0.84)
+
+Final Prediction:
+Positive
+
+Explanation:
+The meme conveys a positive sentiment because both the textual content and visual context express a humorous and non-offensive message.
+```
+
+---
+
+## Applications
+
+- Social Media Analytics
+- Meme Understanding
+- Content Moderation
+- Sentiment Analysis
+- Explainable AI Research
+- Multimodal Learning
+
+---
+
+## Future Enhancements
+
+- Fine-tuning CLIP on meme-specific datasets
+- Advanced multimodal fusion techniques
+- LLM-based explanation generation
+- Multi-class emotion recognition
+- Attention visualization for explainability
+- Real-time meme analysis system
+
