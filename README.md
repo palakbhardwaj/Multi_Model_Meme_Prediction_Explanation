@@ -1,98 +1,79 @@
-# Multimodal Meme Prediction and Explanation
+# 🧠 Multimodal Meme Prediction and Explanation
 
-A multimodal AI framework that combines visual and textual understanding to predict meme sentiment and generate human-readable explanations for model decisions.
+> An Explainable Multimodal AI Framework for Meme Sentiment Classification using CLIP and DistilBERT
 
----
-
-## Overview
-
-Memes communicate meaning through a combination of images and text, making them challenging for traditional unimodal models. This project addresses that challenge by integrating computer vision and natural language processing techniques to perform sentiment classification on memes while providing interpretable explanations for the predictions.
-
-The framework utilizes CLIP for visual understanding and DistilBERT for textual sentiment analysis. Predictions from both modalities are fused to produce a final sentiment label, and an explanation module generates a rationale describing the decision.
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-DeepLearning-red)
+![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-yellow)
+![CLIP](https://img.shields.io/badge/OpenAI-CLIP-green)
 
 ---
 
-## Key Features
+## 📖 Overview
 
-- Multimodal meme sentiment classification
-- Visual sentiment prediction using CLIP
-- Text sentiment prediction using DistilBERT
-- Confidence-based fusion of image and text predictions
-- Automatic explanation generation
-- Explainable AI for transparent decision-making
-- End-to-end notebook implementation
+...
 
 ---
 
-## Architecture
+## ✨ Features
 
-### Step 1: Text Analysis
-The textual content of memes is processed using a pre-trained DistilBERT sentiment classifier.
-
-**Model Used**
-- DistilBERT SST-2
-
-**Output**
-- Positive sentiment
-- Negative sentiment
-- Confidence score
+...
 
 ---
 
-### Step 2: Image Analysis
+## 🏗️ Framework Pipeline
 
-The meme image is analyzed using CLIP (Contrastive Language-Image Pretraining).
-
-**Model Used**
-- CLIP ViT-B/32
-
-The model compares image features against sentiment-related prompts and predicts the visual sentiment of the meme.
-
----
-
-### Step 3: Multimodal Fusion
-
-Predictions from both modalities are combined using confidence-based fusion to obtain the final sentiment classification.
-
-This allows the framework to utilize both:
-- Visual cues
-- Textual context
-
-for more robust meme understanding.
-
----
-
-### Step 4: Explanation Generation
-
-The framework generates a natural language explanation describing why a particular sentiment was assigned.
-
-The explanation is constructed using:
-- Text sentiment
-- Image sentiment
-- Humor information
-- Sarcasm information
-- Offensive content annotations
-
-This improves model transparency and interpretability.
+```text
+Meme
+   │
+ ┌─┴──────────────┐
+ │                │
+ ▼                ▼
+Image          Text
+ │                │
+ ▼                ▼
+CLIP        DistilBERT
+ │                │
+ └──────┬─────────┘
+        ▼
+ Multimodal Fusion
+        │
+        ▼
+ Sentiment Prediction
+        │
+        ▼
+ Explanation Generation
+```
 
 ---
 
-## Dataset
+## 🧠 Methodology
 
-The project uses the **Memotion Dataset**, which contains:
+### 1. Text Analysis
 
-- Meme images
-- Meme captions/text
-- Sentiment annotations
-- Humor annotations
-- Sarcasm annotations
-- Offensive content labels
+...
 
-The dataset is preprocessed before inference and analysis.
+### 2. Image Analysis
+
+...
+
+### 3. Multimodal Fusion
+
+...
+
+### 4. Explanation Generation
+
+...
 
 ---
 
-## Project Structure
+## 📂 Dataset
+
+...
+
+---
+
+## 📁 Repository Structure
 
 ```text
 Multimodal-Meme-Prediction/
@@ -100,14 +81,13 @@ Multimodal-Meme-Prediction/
 ├── Multi_Model_Meme_Prediction_Explanation.ipynb
 ├── dataset/
 ├── outputs/
-├── images/
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 - Python
 - PyTorch
@@ -117,29 +97,23 @@ Multimodal-Meme-Prediction/
 - NumPy
 - Pillow
 - Matplotlib
+- Jupyter Notebook
 
 ---
 
-## Installation
-
-Clone the repository:
+## ⚙️ Installation
 
 ```bash
 git clone https://github.com/your-username/Multimodal-Meme-Prediction.git
 cd Multimodal-Meme-Prediction
-```
-
-Install dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-## Usage
+## ▶️ Usage
 
-Launch Jupyter Notebook:
+Run the notebook:
 
 ```bash
 jupyter notebook
@@ -151,54 +125,47 @@ Open:
 Multi_Model_Meme_Prediction_Explanation.ipynb
 ```
 
-Run all cells sequentially to:
-
-1. Load the dataset
-2. Perform text sentiment analysis
-3. Perform image sentiment analysis
-4. Fuse predictions
-5. Generate explanations
-6. Visualize results
-
 ---
 
-## Sample Output
+## 📊 Sample Output
 
 ```text
 Meme Sentiment: Positive
 
-Text Prediction:
-Positive (0.91)
+Text Prediction : Positive (0.91)
 
-Image Prediction:
-Positive (0.84)
+Image Prediction : Positive (0.84)
 
-Final Prediction:
-Positive
+Final Prediction : Positive
 
 Explanation:
-The meme conveys a positive sentiment because both the textual content and visual context express a humorous and non-offensive message.
+The meme conveys a positive sentiment because both
+the textual and visual information express a humorous
+and non-offensive message.
 ```
 
 ---
 
-## Applications
+## 🎯 Applications
 
 - Social Media Analytics
-- Meme Understanding
+- Meme Sentiment Analysis
 - Content Moderation
-- Sentiment Analysis
-- Explainable AI Research
+- Explainable AI
+- Opinion Mining
 - Multimodal Learning
 
 ---
 
-## Future Enhancements
+## 🚀 Future Work
 
-- Fine-tuning CLIP on meme-specific datasets
-- Advanced multimodal fusion techniques
+- Fine-tune CLIP on meme datasets
+- Cross-modal attention fusion
 - LLM-based explanation generation
-- Multi-class emotion recognition
-- Attention visualization for explainability
-- Real-time meme analysis system
+- Multi-class emotion classification
+- Attention visualization
+- Real-time deployment
 
+---
+
+## ⭐ If you found this project helpful, consider giving it a star!
