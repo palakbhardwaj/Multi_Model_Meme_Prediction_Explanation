@@ -28,6 +28,28 @@ This project presents a **multimodal framework** for meme sentiment prediction b
 - ⚡ Simple inference pipeline
 
 ---
+## 📂 Dataset
+
+This project uses the **Memotion Dataset 7K**, a benchmark dataset developed for multimodal meme analysis and sentiment understanding. The dataset contains approximately **7,000 internet memes** annotated with multiple affective and semantic labels, making it suitable for multimodal learning tasks.
+
+### Dataset Contents
+
+* 🖼️ Meme images
+* 📝 Embedded meme text
+* 😊 Sentiment labels (Positive, Neutral, Negative)
+* 😂 Humor labels
+* 🙃 Sarcasm labels
+* 😡 Offensive content labels
+* 💥 Motivational labels
+
+The dataset is preprocessed before inference by loading meme images, preparing textual inputs, and organizing annotations for sentiment prediction and explanation generation.
+
+### Dataset Source
+
+The dataset can be downloaded from Kaggle:
+
+🔗 **https://www.kaggle.com/datasets/williamscott701/memotion-dataset-7k**
+
 
 ## 🏗️ Framework Pipeline
 
