@@ -11,71 +11,74 @@
 
 ## 📖 Overview
 
-Memes are a popular form of online communication that combine visual and textual information to convey emotions, opinions, and humor. Since the meaning of a meme often depends on the interaction between its image and text, traditional unimodal models struggle to accurately interpret their sentiment.
+Memes have become one of the most influential forms of online communication, combining images and text to express emotions, opinions, humor, and sarcasm. Understanding meme sentiment is challenging because the intended meaning often emerges from the interaction between visual and textual information rather than either modality alone.
 
-This project presents a **multimodal framework** for meme sentiment prediction by integrating **CLIP** for visual understanding and **DistilBERT** for textual sentiment analysis. The predictions from both modalities are combined using a confidence-based fusion strategy to produce the final sentiment label. Additionally, the framework generates human-readable explanations that improve transparency and interpretability of the model's decisions.
+This project presents a **Multimodal Meme Prediction and Explanation Framework** that leverages **CLIP (Contrastive Language–Image Pretraining)** for visual understanding and **DistilBERT** for textual sentiment analysis. Predictions from both modalities are combined using a confidence-based fusion strategy to generate the final sentiment label. Additionally, the framework produces **human-readable explanations** that justify each prediction, improving model transparency and interpretability through Explainable AI (XAI).
 
 ---
 
 ## ✨ Features
 
-- 🖼️ Image sentiment prediction using **CLIP ViT-B/32**
+- 🖼️ Visual sentiment prediction using **CLIP ViT-B/32**
 - 📝 Text sentiment prediction using **DistilBERT**
 - 🔀 Confidence-based multimodal fusion
 - 🤖 Automatic explanation generation
 - 🔍 Explainable AI (XAI)
 - 📊 End-to-end implementation in Jupyter Notebook
-- ⚡ Simple inference pipeline
+- ⚡ Lightweight and easy-to-use inference pipeline
+- 📈 Human-readable prediction summaries
 
 ---
+
 ## 📂 Dataset
 
-This project uses the **Memotion Dataset 7K**, a benchmark dataset developed for multimodal meme analysis and sentiment understanding. The dataset contains approximately **7,000 internet memes** annotated with multiple affective and semantic labels, making it suitable for multimodal learning tasks.
+This project uses the **Memotion Dataset 7K**, a benchmark dataset designed for multimodal meme understanding and sentiment analysis. The dataset contains approximately **7,000 internet memes** annotated with multiple affective and semantic labels, making it suitable for multimodal learning tasks.
 
 ### Dataset Contents
 
-* 🖼️ Meme images
-* 📝 Embedded meme text
-* 😊 Sentiment labels (Positive, Neutral, Negative)
-* 😂 Humor labels
-* 🙃 Sarcasm labels
-* 😡 Offensive content labels
-* 💥 Motivational labels
+- 🖼️ Meme Images
+- 📝 Embedded Meme Text
+- 😊 Sentiment Labels (Positive, Neutral, Negative)
+- 😂 Humor Labels
+- 🙃 Sarcasm Labels
+- 😡 Offensive Content Labels
+- 💥 Motivational Labels
 
-The dataset is preprocessed before inference by loading meme images, preparing textual inputs, and organizing annotations for sentiment prediction and explanation generation.
+Before inference, the dataset is preprocessed by loading meme images, preparing textual inputs, and organizing annotations for prediction and explanation generation.
 
 ### Dataset Source
 
-The dataset can be downloaded from Kaggle:
+The dataset is available on Kaggle:
 
-🔗 **https://www.kaggle.com/datasets/williamscott701/memotion-dataset-7k**
+**https://www.kaggle.com/datasets/williamscott701/memotion-dataset-7k**
 
+---
 
 ## 🏗️ Framework Pipeline
 
 ```text
-                    Input Meme
-                        │
-        ┌───────────────┴───────────────┐
-        │                               │
-        ▼                               ▼
-   Meme Image                     Meme Text
-        │                               │
-        ▼                               ▼
-  CLIP ViT-B/32                  DistilBERT
-        │                               │
-        ▼                               ▼
- Image Prediction             Text Prediction
-        │                               │
-        └───────────────┬───────────────┘
-                        ▼
-          Confidence-Based Fusion
-                        │
-                        ▼
-         Final Sentiment Prediction
-                        │
-                        ▼
-      Natural Language Explanation
+                        Input Meme
+                            │
+            ┌───────────────┴───────────────┐
+            │                               │
+            ▼                               ▼
+       Meme Image                     Meme Text
+            │                               │
+            ▼                               ▼
+      CLIP ViT-B/32                  DistilBERT
+            │                               │
+            ▼                               ▼
+     Image Prediction             Text Prediction
+            │                               │
+            └───────────────┬───────────────┘
+                            ▼
+              Confidence-Based Fusion
+                            │
+                            ▼
+             Final Sentiment Prediction
+                            │
+                            ▼
+          Natural Language Explanation
 ```
 
 ---
@@ -84,7 +87,7 @@ The dataset can be downloaded from Kaggle:
 
 ### 1️⃣ Text Analysis
 
-The textual content of the meme is processed using a pre-trained **DistilBERT** sentiment classifier to identify its sentiment and confidence score.
+The textual content of each meme is processed using a pre-trained **DistilBERT** sentiment classifier to identify the sentiment expressed in the meme.
 
 **Output**
 
@@ -96,36 +99,36 @@ The textual content of the meme is processed using a pre-trained **DistilBERT** 
 
 ### 2️⃣ Image Analysis
 
-The image is analyzed using **CLIP (Contrastive Language–Image Pretraining)**.
+The visual content is analyzed using **CLIP (Contrastive Language–Image Pretraining)**.
 
-Instead of directly classifying images, CLIP compares image embeddings with sentiment-related text prompts to determine the most likely visual sentiment.
+Instead of directly classifying images, CLIP compares image embeddings with sentiment-related prompts to estimate the visual sentiment.
 
 The visual branch captures:
 
 - Facial expressions
 - Objects
 - Scene context
-- Visual emotions
+- Emotional cues
 
 ---
 
 ### 3️⃣ Multimodal Fusion
 
-The predictions from both branches are combined using a confidence-based fusion strategy.
+The outputs of the image and text branches are combined using a confidence-based fusion strategy.
 
-The fusion process considers:
+The fusion module considers:
 
-- Text prediction confidence
 - Image prediction confidence
-- Agreement between both modalities
+- Text prediction confidence
+- Cross-modal agreement
 
-This produces a more reliable final prediction than using either modality independently.
+This improves prediction robustness when either modality alone is ambiguous.
 
 ---
 
 ### 4️⃣ Explanation Generation
 
-To improve interpretability, the framework generates a natural language explanation describing why a particular sentiment was assigned.
+To improve interpretability, the framework generates a natural language explanation describing why a particular sentiment was predicted.
 
 The explanation incorporates information from:
 
@@ -137,24 +140,7 @@ The explanation incorporates information from:
 
 **Example**
 
-> *The meme is classified as positive because both the textual content and visual cues express a humorous, non-offensive message, leading to a high-confidence multimodal prediction.*
-
----
-
-## 📂 Dataset
-
-The project uses the **Memotion Dataset**, a benchmark dataset designed for multimodal meme understanding.
-
-The dataset contains:
-
-- Meme Images
-- Meme Text
-- Sentiment Labels
-- Humor Labels
-- Sarcasm Labels
-- Offensive Content Labels
-
-Before inference, the dataset undergoes preprocessing, including image loading, text normalization, and annotation preparation.
+> *The meme is classified as positive because both the textual content and visual cues express a humorous, non-offensive message, resulting in a high-confidence multimodal prediction.*
 
 ---
 
@@ -233,6 +219,14 @@ Run all cells sequentially to:
 
 ---
 
+## 📈 Results
+
+The proposed multimodal framework demonstrates the effectiveness of combining visual and textual information for meme sentiment prediction.
+
+By integrating **CLIP** and **DistilBERT**, the framework produces more robust predictions than relying on a single modality. The explanation module further enhances transparency by providing human-readable justifications for each prediction, making the decision-making process easier to interpret.
+
+---
+
 ## 📊 Sample Output
 
 ```text
@@ -262,13 +256,14 @@ modalities results in a high-confidence prediction.
 
 ## 🎯 Applications
 
-- Social Media Analytics
-- Meme Sentiment Analysis
-- Explainable AI (XAI)
-- Content Moderation
-- Opinion Mining
-- Multimodal Learning
-- AI Research
+- 📱 Social Media Analytics
+- 😊 Meme Sentiment Analysis
+- 🛡️ Content Moderation
+- 🤖 Explainable AI (XAI)
+- 📊 Opinion Mining
+- 🧠 Multimodal Learning
+- 📚 AI Research
+- 🌐 Social Media Monitoring
 
 ---
 
@@ -278,17 +273,19 @@ modalities results in a high-confidence prediction.
 - Explore transformer-based multimodal fusion techniques
 - Integrate Large Language Models (LLMs) for richer explanations
 - Extend the framework for multi-class emotion recognition
-- Incorporate attention visualization methods
-- Develop a web-based interface for real-time inference
+- Incorporate attention and Grad-CAM visualizations
+- Develop a Streamlit-based web application
+- Build a real-time inference API
+- Evaluate the framework on additional multimodal benchmark datasets
 
 ---
 
 ## ⚠️ Limitations
 
 - Uses pre-trained models without task-specific fine-tuning.
-- Explanation generation is template-based.
-- Performance depends on the quality of meme text.
-- Currently supports binary sentiment prediction.
+- Explanation generation is template-based rather than generative.
+- Performance depends on the quality of extracted meme text.
+- Currently supports sentiment prediction and does not model fine-grained emotional states.
 
 ---
 
@@ -296,10 +293,12 @@ modalities results in a high-confidence prediction.
 
 Contributions are welcome!
 
+If you would like to improve this project:
+
 1. Fork the repository.
 2. Create a new feature branch.
 3. Commit your changes.
-4. Open a Pull Request.
+4. Submit a Pull Request.
 
 ---
 
